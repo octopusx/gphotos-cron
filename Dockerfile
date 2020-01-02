@@ -11,6 +11,6 @@ VOLUME /config
 RUN mkdir /storage
 VOLUME /storage
 
-RUN (crontab -l 2>/dev/null; echo "* 4 * * * gphotos-sync /storage 2>&1 | tee -a /config/log.txt") | crontab -
+RUN (crontab -l 2>/dev/null; echo "* 4 * * * /usr/local/bin/gphotos-sync /storage 2>&1 | tee -a /config/log.txt") | crontab -
 
 CMD ["cron", "-f"]
